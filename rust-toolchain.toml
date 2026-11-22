@@ -1,5 +1,4 @@
 [toolchain]
-# zcash_tachyon needs Rust 1.97 or newer.
 channel = "1.99.0"
 components = ["clippy", "rustfmt"]
 profile = "minimal"

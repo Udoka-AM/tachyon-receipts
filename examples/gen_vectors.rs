@@ -1,8 +1,4 @@
-//! Writes `vectors/receipts-v0.json`.
-//!
-//! Run with `cargo run --example gen_vectors`. Every value is derived from a
-//! fixed seed, and the note commitments come from `zcash_tachyon`, so the file
-//! is reproducible at the pinned tachyon commit.
+//! Regenerates vectors/receipts-v0.json from a fixed seed.
 
 #[path = "../tests/common/mod.rs"]
 mod common;
@@ -55,7 +51,6 @@ fn main() {
         ),
     ];
 
-    // Invalid encodings, each built from the third valid receipt with one change.
     let base = Receipt::from_hex(valid_vectors[2]["receipt"].as_str().unwrap()).unwrap();
     let good = base.to_bytes();
     let mut invalid = Vec::new();
@@ -77,8 +72,7 @@ fn main() {
     b[rcm..rcm + 32].fill(0);
     push("zero rcm", b);
 
-    // Decodes, but fails verification: the value is one zatoshi higher than
-    // the note's, so the opening no longer commits to cm.
+    // Decodes, but fails verification.
     let mut inflated = base.clone();
     inflated.opening.value += 1;
     let verify_invalid = vec![json!({

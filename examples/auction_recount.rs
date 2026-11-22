@@ -1,13 +1,4 @@
-//! A sealed-bid auction recounted from receipts alone.
-//!
-//! Run with `cargo run --example auction_recount`.
-//!
-//! What's real and what isn't: every note and note commitment comes from
-//! `zcash_tachyon` at the pinned commit. There is no chain and no proof. Each
-//! bundle is stood in for by its digest and the tachygram pairs its actions
-//! would publish, which is exactly what `BundleView::from_bundle` reads from a
-//! real bundle. When a Tachyon testnet runs, the views come from chain data
-//! instead and nothing else changes.
+//! No chain: each bundle is stood in for by its digest and tachygram pairs.
 
 #[path = "../tests/common/mod.rs"]
 mod common;
@@ -22,11 +13,9 @@ fn main() {
     let mut rng = StdRng::seed_from_u64(20_261_122);
     let context = b"sealforge:auction:DEMO-7:recount";
 
-    // The escrow's payment key. In sealForge it is owned by the 2-of-3 FROST group.
     let escrow = random_fp_bytes(&mut rng);
     println!("escrow pk  {}", &to_hex(&escrow)[..16]);
 
-    // Seven bids, paid to the escrow across three bundles.
     let bids = [0.12, 0.25, 0.08, 0.31, 0.15, 0.22, 0.10];
     let notes: Vec<_> = bids
         .iter()
@@ -39,7 +28,6 @@ fn main() {
     for (g, members) in groups.iter().enumerate() {
         let mut digest = [0u8; 32];
         rng.fill_bytes(&mut digest);
-        // Each bundle also carries actions that have nothing to do with the auction.
         let mut pairs = vec![(random_tachygram(&mut rng), random_tachygram(&mut rng))];
         pairs.extend(
             members
@@ -49,7 +37,6 @@ fn main() {
         bundles.push((4_600_000 + g as u32, BundleView::new(digest, pairs)));
     }
 
-    // Each bidder (or the escrow's operator) issues one receipt per bid.
     let mut receipts = Vec::new();
     for (g, members) in groups.iter().enumerate() {
         let (height, view) = &bundles[g];
@@ -65,7 +52,6 @@ fn main() {
         receipts[0].to_bytes().len()
     );
 
-    // Anyone recounts: every receipt must verify, pay the escrow, and be unique.
     let lookup = |d: &[u8; 32]| bundles.iter().map(|(_, v)| v).find(|v| &v.digest == d);
     let expect = Expect::network(Network::Regtest)
         .with_context(context)
@@ -78,7 +64,6 @@ fn main() {
         total.total % ZAT
     );
 
-    // What a cheating operator or bidder can't get past.
     let mut inflated = receipts.clone();
     inflated[3].opening.value += ZAT;
     report(
@@ -94,7 +79,7 @@ fn main() {
     );
 
     let mut elsewhere = receipts.clone();
-    // A real note to the escrow that no bundle ever created.
+    // Never created by any bundle.
     let stray = note_to(&mut rng, escrow, ZAT);
     let (h, v) = &bundles[0];
     elsewhere.push(Receipt::new(&stray, Network::Regtest, *h, v.digest, context).unwrap());

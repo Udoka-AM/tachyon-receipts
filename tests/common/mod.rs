@@ -7,8 +7,7 @@ use zcash_tachyon::{
     Note, Tachygram, keys::PaymentKey, note::CommitmentTrapdoor, nullifier, pasta::Fp, value,
 };
 
-/// A uniformly random canonical field element. Pallas p is just above 2^254,
-/// so clearing the top two bits always gives a canonical encoding.
+// Clearing the top two bits keeps the value below the Pallas modulus.
 pub fn random_fp_bytes(rng: &mut impl RngCore) -> [u8; 32] {
     let mut bytes = [0u8; 32];
     rng.fill_bytes(&mut bytes);

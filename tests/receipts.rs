@@ -8,7 +8,6 @@ use tachyon_receipts::{
 
 const CONTEXT: &[u8] = b"audit:deposit-1042";
 
-/// A bundle view holding `cm` as one output's pair, among a few other actions.
 fn bundle_with(rng: &mut StdRng, cms: &[zcash_tachyon::Tachygram]) -> BundleView {
     let mut digest = [0u8; 32];
     rand::RngCore::fill_bytes(rng, &mut digest);
@@ -66,7 +65,6 @@ fn rejects_a_swapped_payment_key() {
 
 #[test]
 fn rejects_a_matching_opening_with_a_forged_cm() {
-    // Opening and cm agree, but the note was never created in this bundle.
     let (mut rng, _, bundle, _) = setup(5);
     let other = random_note(&mut rng);
     let forged = Receipt::new(&other, Network::Testnet, 4_600_000, bundle.digest, CONTEXT).unwrap();
@@ -145,7 +143,7 @@ fn rejects_malformed_bytes() {
         Error::TrailingBytes
     );
 
-    // pk starts at 4 + 1 + 1 + 4 + 32 + 32 = 74; all-ones is not canonical.
+    // pk starts at byte 74.
     let mut non_canonical = good.clone();
     non_canonical[74..106].fill(0xff);
     assert_eq!(
@@ -153,7 +151,7 @@ fn rejects_malformed_bytes() {
         Error::NonCanonical(tachyon_receipts::Field::Pk)
     );
 
-    // rcm is the 32 bytes before the context length.
+    // rcm sits just before the context length byte.
     let rcm_start = tachyon_receipts::FIXED_LEN - 1 - 32;
     let mut zero_rcm = good.clone();
     zero_rcm[rcm_start..rcm_start + 32].fill(0);

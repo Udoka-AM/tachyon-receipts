@@ -1,5 +1,3 @@
-//! Checks `vectors/receipts-v0.json` against this crate and zcash_tachyon.
-
 use serde_json::Value;
 use tachyon_receipts::{BundleView, Error, Expect, Network, Opening, Receipt, from_hex, verify};
 
