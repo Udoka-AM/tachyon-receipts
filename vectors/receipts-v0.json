@@ -1,0 +1,83 @@
+{
+  "decode_invalid": [
+    {
+      "reason": "bad magic",
+      "receipt": "555243500001c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c3113763154496213227547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d1220bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f235271261756469743a6465706f7369742d31303432"
+    },
+    {
+      "reason": "unsupported version",
+      "receipt": "545243500101c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c3113763154496213227547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d1220bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f235271261756469743a6465706f7369742d31303432"
+    },
+    {
+      "reason": "truncated",
+      "receipt": "545243500001c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c3113763154496213227547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d1220bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f235271261756469743a6465706f7369742d313034"
+    },
+    {
+      "reason": "non-canonical pk",
+      "receipt": "545243500001c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c31137631544962132ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff20bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f235271261756469743a6465706f7369742d31303432"
+    },
+    {
+      "reason": "zero rcm",
+      "receipt": "545243500001c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c3113763154496213227547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d1220bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc3241500000000000000000000000000000000000000000000000000000000000000001261756469743a6465706f7369742d31303432"
+    }
+  ],
+  "format": "tachyon-receipts v0",
+  "note": "cm is zcash_tachyon's Note::commitment(); bundle_digest values are random stand-ins.",
+  "tachyon_rev": "8919018e6bd07e3c65c86a3ea735cf09c88c5ac7",
+  "valid": [
+    {
+      "bundle_digest": "646f0a3e41e857b3b8246ee8481fdaa68ed555bd9b7df5fae133b30d890ca859",
+      "cm": "ac0abf2df04a12f350b6fd7348e800bd8dfdc0dee3b4b8fbfe3b48931fab2212",
+      "context": "",
+      "height": 1,
+      "network": "testnet",
+      "pk": "727f4c81edb0d3d974c5224688b9567eef3fb0805e1d0d10c70204b6b67f403d",
+      "psi": "07f5d7962db594bd5ae2da67ca1e0615f8da9a3efc209d5ab74dee6d45b29930",
+      "rcm": "2d9bbfa45db9da4ea80243afd7ab2f0e726908b0010786a258e527e3b4b65017",
+      "receipt": "54524350000101000000646f0a3e41e857b3b8246ee8481fdaa68ed555bd9b7df5fae133b30d890ca859ac0abf2df04a12f350b6fd7348e800bd8dfdc0dee3b4b8fbfe3b48931fab2212727f4c81edb0d3d974c5224688b9567eef3fb0805e1d0d10c70204b6b67f403d000000000000000007f5d7962db594bd5ae2da67ca1e0615f8da9a3efc209d5ab74dee6d45b299302d9bbfa45db9da4ea80243afd7ab2f0e726908b0010786a258e527e3b4b6501700",
+      "value": 0
+    },
+    {
+      "bundle_digest": "3088818b69b1befc46201ffcaa4e6034c0bca4879be5c62a7300eeacb59dcc69",
+      "cm": "809a4f84a19fc97e4752b57734cb467277cebdf61f6a060ef21128d698878308",
+      "context": "7365616c666f7267653a7265636f756e74",
+      "height": 2074,
+      "network": "regtest",
+      "pk": "bb6955ff69ecdfee6939e785fcdecd510786b8f07325bf2d6a503b0cc782932d",
+      "psi": "447190ba8433cdbb3066a1204b74d7cd02913c3693bf5fdcfd43a7fac9f48c32",
+      "rcm": "c956e83c2324e43081c2f23b52e21e519138647d67970318ed253ccb8973f403",
+      "receipt": "5452435000021a0800003088818b69b1befc46201ffcaa4e6034c0bca4879be5c62a7300eeacb59dcc69809a4f84a19fc97e4752b57734cb467277cebdf61f6a060ef21128d698878308bb6955ff69ecdfee6939e785fcdecd510786b8f07325bf2d6a503b0cc782932d0100000000000000447190ba8433cdbb3066a1204b74d7cd02913c3693bf5fdcfd43a7fac9f48c32c956e83c2324e43081c2f23b52e21e519138647d67970318ed253ccb8973f403117365616c666f7267653a7265636f756e74",
+      "value": 1
+    },
+    {
+      "bundle_digest": "f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb",
+      "cm": "976d86fba926a03d801719e0ea1fe8a15178d575d7b280c31137631544962132",
+      "context": "61756469743a6465706f7369742d31303432",
+      "height": 4600000,
+      "network": "testnet",
+      "pk": "27547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d12",
+      "psi": "8950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415",
+      "rcm": "fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f23527",
+      "receipt": "545243500001c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c3113763154496213227547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d1220bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f235271261756469743a6465706f7369742d31303432",
+      "value": 12500000
+    },
+    {
+      "bundle_digest": "6eba855fc3ce2fff9c31bb55e48f862def6d1f62a8075965713278f55c8c8a3f",
+      "cm": "f0bc0e2b3e5d02e580a4f1468a5e614a0f2377adeced1109a315d8f5b3d4cb34",
+      "context": "ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+      "height": 4294967295,
+      "network": "mainnet",
+      "pk": "6b0a3774192bf3c688afd595d523f8fe2926efef55ec49865ab1fa1c2ad31e1f",
+      "psi": "f25bf94e1a9a2180d459ecf99ab01b99e04b140957212e31c09298b731170331",
+      "rcm": "97b2b2adb3f961c33183aa71b41a547b6e11b9f00658d178592d8108fdf18a15",
+      "receipt": "545243500000ffffffff6eba855fc3ce2fff9c31bb55e48f862def6d1f62a8075965713278f55c8c8a3ff0bc0e2b3e5d02e580a4f1468a5e614a0f2377adeced1109a315d8f5b3d4cb346b0a3774192bf3c688afd595d523f8fe2926efef55ec49865ab1fa1c2ad31e1f0040075af0750700f25bf94e1a9a2180d459ecf99ab01b99e04b140957212e31c09298b73117033197b2b2adb3f961c33183aa71b41a547b6e11b9f00658d178592d8108fdf18a15ffababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab",
+      "value": 2100000000000000
+    }
+  ],
+  "verify_invalid": [
+    {
+      "reason": "commitment mismatch (value + 1)",
+      "receipt": "545243500001c0304600f79d153f9cf0d6bf1a561afa5d520b11a7c1728a8ce1a9f5182104e2c125cfcb976d86fba926a03d801719e0ea1fe8a15178d575d7b280c3113763154496213227547c4fd9f9cdef550c6840002d81e09e1af5023122b38f8871f2e205391d1221bcbe00000000008950617c5f6d27f78f00b7670b46beb3ed8ba78f003a633ffb3ae1c7fdc32415fde1dceb936dbf2fbff790abedce4bbe5aa258ac38e21ae6847eed8185f235271261756469743a6465706f7369742d31303432"
+    }
+  ]
+}

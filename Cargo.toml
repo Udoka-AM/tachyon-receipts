@@ -1,0 +1,23 @@
+[package]
+name = "tachyon-receipts"
+version = "0.0.1"
+edition = "2024"
+rust-version = "1.97"
+license = "MIT OR Apache-2.0"
+description = "Payment receipts for the Tachyon shielded pool: prove one payment to a third party without a viewing key"
+repository = "https://github.com/Udoka-AM/tachyon-receipts"
+readme = "README.md"
+keywords = ["zcash", "tachyon", "privacy", "payments"]
+publish = false
+
+[dependencies]
+# Pinned to tachyon-zcash/tachyon main at 8919018 (21 Nov 2026). The note
+# commitment and bundle digest come from this crate, never reimplemented here.
+zcash_tachyon = { git = "https://github.com/tachyon-zcash/tachyon", rev = "8919018e6bd07e3c65c86a3ea735cf09c88c5ac7" }
+# Provides the `Field` trait for the canonical 32-byte encoding of `Fp`. Same
+# version zcash_tachyon resolves through ragu.
+zakura-udon = "0.1"
+
+[dev-dependencies]
+rand = { version = "0.8", features = ["std_rng"] }
+serde_json = "1"
